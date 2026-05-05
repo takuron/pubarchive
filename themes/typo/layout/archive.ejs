@@ -1,7 +1,7 @@
 <ul class="archives">
   <% page.posts.each(function (post) { %>
   <li class="archive-item">
-    <span class="date"><%= date(post.date, "YYYY.MM.DD") %></span>
+    <span class="date"><%= date(post.date, "YYYY.M.D") %></span>
     <a class="title" href="<%- url_for(post.path) %>"><%= post.title %></a>
     <% if (post.source_url) { %>
     <span class="source"><a href="<%- post.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></span>

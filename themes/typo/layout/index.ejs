@@ -7,7 +7,7 @@
       <a class="read-more" href="<%- url_for(post.path) %>"> ... </a>
     </div>
     <div class="post-item-extra">
-      <div class="date"><%- date(post.date, "YYYY.MM.DD") %></div>
+      <div class="date"><%- date(post.date, "YYYY.M.D") %></div>
       <% if (post.source_url) { %>
       <div class="source"><a href="<%- post.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></div>
       <% } %>
