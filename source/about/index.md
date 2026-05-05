@@ -3,15 +3,6 @@ title: About
 layout: page
 ---
 
-## About This Site
+本站为个人信息聚合站，在注明来源的情况下收集归档个人认为需要的文章内容，版权均归原作者所有。如果你是某篇文章的原作者且不希望自己的文章出现在本站，请发邮件到receiver7012@takuron.com联系本人删除。
 
-This website serves as a personal web content archive — a curated collection of articles, notes, and references gathered from across the internet. It is intended for personal use, offline reading, and long-term preservation of valuable online content.
-
-### Disclaimer
-
-- All archived content remains the intellectual property of its original authors.
-- Sources are credited wherever possible.
-- This site is not intended for public distribution or commercial use.
-- If you believe any content here infringes upon your rights, please contact me for prompt removal.
-
-*Last updated: placeholder*
+本站已关闭爬虫/AI学习抓取。
