@@ -3,6 +3,9 @@
   <li class="archive-item">
     <span class="date"><%= date(post.date, "YYYY.MM.DD") %></span>
     <a class="title" href="<%- url_for(post.path) %>"><%= post.title %></a>
+    <% if (post.source_url) { %>
+    <span class="source"><a href="<%- post.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></span>
+    <% } %>
     <!-- <div class="tags">
       <% post.tags.map(tag => tag.name).forEach(function (tag) { %>
         <div class="tag-item"><%- tag %></div>

@@ -8,6 +8,9 @@
     </div>
     <div class="post-item-extra">
       <div class="date"><%- date(post.date, "YYYY.MM.DD") %></div>
+      <% if (post.source_url) { %>
+      <div class="source"><a href="<%- post.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></div>
+      <% } %>
       <div class="tags">
         <% post.tags.map(tag => tag.name).forEach(function (tag) { %>
         <div class="tag-item"><%- tag %></div>
