@@ -9,16 +9,14 @@
     <% if (page.source_url) { %>
     <div class="source"><a href="<%- page.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></div>
     <% } %>
-  </div>
-  <% if (page.tags && page.tags.length) { %>
-  <div class="post-tags">
+    <% if (page.tags && page.tags.length) { %>
     <div class="tags">
       <% page.tags.map(tag => tag.name).forEach(function (tag) { %>
       <div class="tag-item"><%- tag %></div>
       <% }) %>
     </div>
+    <% } %>
   </div>
-  <% } %>
   <% } %>
 
   <main class="post-content"><%- page.content %></main>
