@@ -22,10 +22,15 @@
     font-size: 0.875rem;
     color: var(--font-color-extra);
     flex: 0 0 100%;
+    margin-bottom: 12px;
+}
+
+.post-tags {
+    flex: 0 0 100%;
     margin-bottom: 32px;
 }
 
-.post-meta > .tags {
+.post-tags > .tags {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
