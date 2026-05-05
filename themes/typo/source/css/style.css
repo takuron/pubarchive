@@ -314,3 +314,69 @@ a {
     border-bottom: 2px solid var(--font-color);
     cursor: not-allowed;
 }
+
+/* ---- tag cloud ---- */
+.tag-cloud .page-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--font-color);
+    margin-bottom: 24px;
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.tag-list > .tag-item {
+    margin: 0 16px 12px 0;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: var(--color-list-item-odd);
+    transition: background ease-in-out 0.3s;
+}
+
+.tag-list > .tag-item:hover {
+    background: var(--color-unactive);
+    transition: background ease-in-out 0.3s;
+}
+
+.tag-list > .tag-item .tag-name {
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.tag-list > .tag-item .tag-name:hover {
+    text-decoration: underline;
+}
+
+.tag-list > .tag-item .tag-count {
+    color: var(--font-color-extra);
+    font-size: 0.875rem;
+    margin-left: 4px;
+}
+
+.tag-list > .tag-item .tag-count::before {
+    content: "(";
+}
+
+.tag-list > .tag-item .tag-count::after {
+    content: ")";
+}
+
+.tag-header .page-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--font-color);
+    margin-bottom: 24px;
+}
+
+.empty {
+    color: var(--font-color-extra);
+    font-style: italic;
+}

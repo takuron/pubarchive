@@ -3,7 +3,9 @@ favicon: /icon.svg
 icon: /icon.svg
 
 menu:
+  main blog: https://takuron.com
   archives: /archives
+  tags: /tags
   about: /about
 
 copyright: 2024 typo
