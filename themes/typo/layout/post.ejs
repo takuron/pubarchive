@@ -3,6 +3,9 @@
   <div class="post-title"><%= page.title %></div>
   <div class="post-meta">
     <div class="date"><%- date(page.date, "YYYY MMMM Do") %></div>
+    <% if (page.updated && page.updated !== page.date) { %>
+    <div class="updated">updated: <%- date(page.updated, "YYYY MMMM Do") %></div>
+    <% } %>
     <% if (page.source_url) { %>
     <div class="source"><a href="<%- page.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></div>
     <% } %>
