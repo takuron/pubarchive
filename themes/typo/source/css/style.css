@@ -166,11 +166,8 @@ a {
     font-size: 0.875rem;
 }
 
-.post-item-extra > .tags,
-.post-meta > .tags {
+.post-item-extra > .tags {
     display: flex;
-    flex-wrap: wrap;
-    flex: 0 0 100%;
 }
 
 .read-more {

@@ -17,10 +17,18 @@
 }
 
 .post-meta {
+    display: flex;
+    flex-wrap: wrap;
     font-size: 0.875rem;
     color: var(--font-color-extra);
     flex: 0 0 100%;
     margin-bottom: 32px;
+}
+
+.post-meta > .tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .post-content {
