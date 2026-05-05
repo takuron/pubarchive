@@ -131,6 +131,11 @@ a {
     margin-right: 1em;
 }
 
+.post-item-extra > .updated,
+.post-meta > .updated {
+    margin-right: 1em;
+}
+
 .post-item-extra > .source,
 .post-meta > .source {
     margin-right: 1em;
