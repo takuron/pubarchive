@@ -22,21 +22,24 @@
     font-size: 0.875rem;
     color: var(--font-color-extra);
     flex: 0 0 100%;
-    margin-bottom: 12px;
+    margin-bottom: 32px;
 }
 
 .post-tags {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
     flex: 0 0 100%;
     font-size: 0.875rem;
     color: var(--font-color-extra);
     margin-bottom: 32px;
 }
 
-.post-tags > .tag-item {
+.post-tags > .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.post-tags > .tags > .tag-item {
     flex: 0 1 auto;
 }
 
