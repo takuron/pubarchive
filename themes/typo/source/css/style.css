@@ -160,9 +160,16 @@ a {
     font-size: 0.875rem;
 }
 
-.post-item-extra > .tags,
-.post-meta > .tags {
+.post-item-extra > .tags {
     display: flex;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--font-color-extra);
+    margin-bottom: 32px;
 }
 
 .read-more {
@@ -190,7 +197,8 @@ a {
     transition: transform ease-in-out 0.25s;
 }
 
-.tags > .tag-item::before {
+.tags > .tag-item::before,
+.post-tags > .tag-item::before {
     content: "⌗";
     color: var(--font-color-extra);
     margin-left: 0.5em;

@@ -9,11 +9,11 @@
     <% if (page.source_url) { %>
     <div class="source"><a href="<%- page.source_url %>" target="_blank" rel="noopener noreferrer">view source</a></div>
     <% } %>
-    <div class="tags">
-      <% page.tags.map(tag => tag.name).forEach(function (tag) { %>
-      <div class="tag-item"><%- tag %></div>
-      <% }) %>
-    </div>
+  </div>
+  <div class="post-tags">
+    <% page.tags.map(tag => tag.name).forEach(function (tag) { %>
+    <div class="tag-item"><%- tag %></div>
+    <% }) %>
   </div>
   <% } %>
 
