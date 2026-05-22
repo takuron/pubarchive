@@ -23,6 +23,7 @@ import urllib.parse
 from pathlib import Path
 
 import requests
+import yaml
 
 # ============================================================
 # 配置 —— 可根据项目结构调整
@@ -119,13 +120,25 @@ def generate_filename(url: str, ext: str = "") -> str:
     return f"{url_hash}{ext}"
 
 
-def download_image(url: str, save_path: Path) -> bool:
+def download_image(url: str, save_path: Path, referer: str = "") -> bool:
     """
     下载图片到指定路径。
+
+    参数:
+      url:       图片链接
+      save_path: 本地保存路径
+      referer:   可选的 Referer 请求头，设置为文章来源 URL 可提高抓取成功率
+
     返回 True 表示下载成功，False 表示失败。
     """
+    headers = {}
+    if referer:
+        headers["Referer"] = referer
+
     try:
-        response = SESSION.get(url, timeout=REQUEST_TIMEOUT, stream=True)
+        response = SESSION.get(
+            url, timeout=REQUEST_TIMEOUT, stream=True, headers=headers
+        )
         response.raise_for_status()
 
         # 确保目录存在
@@ -173,6 +186,37 @@ def find_external_images(content: str) -> list[tuple[int, int, str, str]]:
 
 
 # ============================================================
+# Front Matter 解析
+# ============================================================
+
+# 匹配 Hexo 文章的 YAML front matter（位于 --- 分隔符之间）
+FRONT_MATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
+
+
+def extract_source_url(content: str) -> str:
+    """
+    从 Markdown 文件的 front matter 中提取 source_url。
+    若没有则返回空字符串。
+    """
+    match = FRONT_MATTER_RE.search(content)
+    if not match:
+        return ""
+
+    yaml_text = match.group(1)
+    try:
+        front_matter = yaml.safe_load(yaml_text)
+        if isinstance(front_matter, dict):
+            return front_matter.get("source_url", "")
+    except yaml.YAMLError:
+        # YAML 解析失败时，用正则兜底提取 source_url
+        fm_match = re.search(r"^source_url:\s*(.+)$", yaml_text, re.MULTILINE)
+        if fm_match:
+            return fm_match.group(1).strip()
+
+    return ""
+
+
+# ============================================================
 # 主处理逻辑
 # ============================================================
 
@@ -202,6 +246,11 @@ def process_post(md_path: Path, dry_run: bool = False) -> dict:
     # 读取文件内容
     with open(md_path, "r", encoding="utf-8") as f:
         content = f.read()
+
+    # 提取文章来源 URL，作为 Referer 提高图片抓取成功率
+    source_url = extract_source_url(content)
+    if source_url:
+        print(f"  原文链接: {source_url}")
 
     # 查找外部图片
     images = find_external_images(content)
@@ -236,7 +285,7 @@ def process_post(md_path: Path, dry_run: bool = False) -> dict:
                     stats["downloaded"] += 1
                 else:
                     print(f"  [DOWNLOAD] {url} -> {local_filename}")
-                    if download_image(url, save_path):
+                    if download_image(url, save_path, referer=source_url):
                         stats["downloaded"] += 1
                     else:
                         stats["failed"] += 1
